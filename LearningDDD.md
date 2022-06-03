@@ -814,7 +814,7 @@ public class ResponseTimeFrameCalculationService {
 
 - システムの複雑さとは、システムの動作を制御・予測することの難しさの指標
 
-# 7章 時間の次元のモデリング(P.99 - P.116)
+## 7章 時間の次元のモデリング(P.99 - P.116)
 
 この章ではイベントソーシングの概念説明と、イベントソーシングをドメインモデルパターンと組み合わせてイベントソースドメインモデルにする方法を学ぶ。
 
@@ -840,18 +840,18 @@ public class LeadSearchModelProjection {
     public HashSet<string> LastNames { get; private set; }
     public HashSet<PhoneNumber> PhoneNumbers { get; private set; } 
     public int Version { get; private set; }
-    
+
     // LeadInitializedイベントでリードの個人情報を入力する
     public void Apply(LeadInitialized @event) {
         LeadId = @event.LeadId;
         FirstNames = new HashSet<string>();
         LastNames = new HashSet<string>();
         PhoneNumbers = new HashSet<PhoneNumber>();
-        
+
         FirstNames.Add(@event.FirstName);
         LastNames.Add(@event.LastName);
         PhoneNumbers.Add(@event.PhoneNumber);
-        
+
         Version = 0;
     }
     
@@ -862,14 +862,14 @@ public class LeadSearchModelProjection {
         PhoneNumbers.Add(@event.PhoneNumber);
         Version += 1;
     }
-    
+
     // 上記以外のイベントは、特定のモデルの状態に影響を与えないので、
     // イベント情報のみ更新する
     public void Apply(Contacted @event) {
         Version += 1;
     }
-    
-    .... 
+
+    ....
 }
 ```
 
@@ -925,7 +925,7 @@ interface IEventStore {
 public class TicketAPI {
     private ITicketsRepository _ticketsRepository;
     ...
-        
+
         public void RequestEscalation(TicketId id, EscalationReason reson) {
         // 関連するイベントをロード
         var events = _ticketRepository.LoadEvents(id);
@@ -952,13 +952,13 @@ public class Ticket {
             AppendEvent(e);
         }
     }
-    
+
     // 受信したイベントをTicketStateに私、チケットの現在の状態をメモリに保存する
     private void AppendEvent(IDomainEvent @event) {
         _domainEvents.Append(@event);
         ((dynamic)state).Apply((dynamic)@event);
     }
-    
+
     // IsEscalatedフラグを明示的にTrueに設定しない
     // 代わりに適切なイベントをインスタンス化し、それをAppendEventに渡す
     public void Excecute(RequestEscalation cmd) {
@@ -1012,7 +1012,13 @@ hydrate: 水和。静的なものから動的なものにするイメージ。
 - モデルの進化 (イベントが不変な前提でシステムが構築されるので、変更が入るときつい)
 - アーキテクチャの複雑さ
 
-# 8章アーキテクチャパターン
+### 参考ブログ
+
+- [止まらないシステムではなく回復する能力に価値がある リアクティブシステムを実現するためのCQRSとEvent Sourcing](https://logmi.jp/tech/articles/324766)
+- [具体的な実装コードからEventSourcingを理解する](https://blog.j5ik2o.me/entry/2020/09/16/162037)
+- [スターバックスは2フェーズコミットを使わない](https://code.google.com/archive/p/gregors-ramblings-ja/wikis/18_starbucks.wiki)
+
+## 8章アーキテクチャパターン
 
 ## CQRS
 
