@@ -1,5 +1,5 @@
-# Philosophy of Software Engineering
-
+# Philosophy of Software Design
+<https://www.amazon.co.jp/dp/B09B8LFKQL/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1>
 ## 3章 コードが動作することは十分なことではない（戦術的プログラミングvs戦略的プログラミング）
 
 - 戦術的プログラミング：とにかく機能開発を優先させるパターン
