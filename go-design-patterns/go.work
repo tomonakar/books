@@ -1,0 +1,13 @@
+go 1.18
+
+use (
+	./01.creational_patterns
+	./01.creational_patterns/abstract_factory
+	./02.structural_patterns/adapter
+	./02.structural_patterns/bridge
+	./02.structural_patterns/composite
+	./02.structural_patterns/proxy
+	./02.structural_patterns/decorator
+	./02.structural_patterns/facade
+	./02.structural_patterns/flyweight
+)
