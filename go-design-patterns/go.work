@@ -10,4 +10,5 @@ use (
 	./02.structural_patterns/decorator
 	./02.structural_patterns/facade
 	./02.structural_patterns/flyweight
+	./03.behavioral_patterns/chain-of-responsability
 )
