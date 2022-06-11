@@ -12,4 +12,5 @@ use (
 	./02.structural_patterns/flyweight
 	./03.behavioral_patterns/chain-of-responsability
 	./03.behavioral_patterns/template
+	./03.behavioral_patterns/memento
 )
