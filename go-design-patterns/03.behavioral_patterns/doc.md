@@ -57,3 +57,20 @@ Chain of responsibilityパターンの目的
   - Originatorの状態を保存したい場合、またはある時点に戻したい場合は、Originatorに指示を出す
   - Mementoを保持するタイミング・戻すタイミングを保持する役割を持つ
   - Mementoの履歴も保持する
+
+## Interpreterパターン
+
+何らかの文法規則を持ったプログラムを解析し、その結果得られた手順・命令に基づいて処理を実行するパターン
+
+### Interpreterパターンの役割
+
+1. AbstractExpression(抽象的な表現)
+「TerminalExpression」・「NonTerminalExpression」に共通のインタフェースを定義します。
+2. TerminalExpression(終端となる表現)
+終端を表現するクラスです。階層関係の末端(構造木の葉)を表します。
+3. NonTerminalExpression(非終端となる表現)
+非終端を表現するクラスです。階層関係のノード(構造木の節)を表します。
+4. Context(文脈・状況判断)
+「Expression」(インタプリタ)が構文解析を行うための情報を提供します。
+5. Client(利用者)
+「Interpreter」パターンを適用したクラスを利用し処理します。
