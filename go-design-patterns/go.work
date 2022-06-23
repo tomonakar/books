@@ -14,4 +14,5 @@ use (
 	./03.behavioral_patterns/template
 	./03.behavioral_patterns/memento
 	./03.behavioral_patterns/interpreter
+	./03.behavioral_patterns/visitor
 )
