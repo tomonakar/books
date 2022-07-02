@@ -16,4 +16,5 @@ use (
 	./03.behavioral_patterns/interpreter
 	./03.behavioral_patterns/visitor
 	./03.behavioral_patterns/state
+	./03.behavioral_patterns/observer
 )
