@@ -1,5 +1,7 @@
 package main
 
+import "sync"
+
 var addCh chan bool = make(chan bool)
 
 // 「整数を受け取るチャネル」を受け取る
@@ -25,7 +27,10 @@ func init() {
 	}(addCh, getCountCh, quitCh)
 }
 
-type singleton struct{}
+type singleton struct {
+	count int
+	sync.RWMutex
+}
 
 var instance singleton
 
@@ -34,14 +39,15 @@ func GetInstance() *singleton {
 }
 
 func (s *singleton) AddOne() {
-	addCh <- true
+	s.Lock()
+	defer s.Unlock()
+	s.count++
 }
 
 func (s *singleton) GetCount() int {
-	resCh := make(chan int)
-	defer close(resCh)
-	getCountCh <- resCh
-	return <-resCh
+	s.RLock()
+	defer s.RUnlock()
+	return s.count
 }
 
 func (s *singleton) Stop() {
