@@ -17,4 +17,5 @@ use (
 	./03.behavioral_patterns/visitor
 	./03.behavioral_patterns/state
 	./03.behavioral_patterns/observer
+	./05.concurrency_patterns/01.barrier
 )
